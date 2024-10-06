@@ -33,4 +33,6 @@ public class Constantes {
     public static final String ID_PROVEEDOR = "x-id-proveedor";
 
     public static final String ID_PROSER = "x-id-producto-servicio";
+
+    public static final String INFORMACION_NO_ENCONTRADA = "informacion no encontrada";
 }

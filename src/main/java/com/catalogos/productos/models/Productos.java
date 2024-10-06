@@ -36,4 +36,13 @@ public class Productos {
 
     @Column(name = "fecha_creacion")
     private Timestamp fechaCreacion;
+
+    @OneToOne
+    @JoinColumn(name = "id_status")
+    private Estatus estatus;
+
+    public Boolean idNoExiste() {
+
+        return id == null;
+    }
 }
