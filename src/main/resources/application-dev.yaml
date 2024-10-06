@@ -1,0 +1,31 @@
+# Application port
+server:
+  port: 9001
+
+# Spring
+spring:
+  # Postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        #dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        type:
+          descriptor:
+            sql:
+              BasicBinder:
+                log_bind_param: true
+    open-in-view: true
+    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/andyMandy
+    username: postgres
+    password: 123456789
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 5
