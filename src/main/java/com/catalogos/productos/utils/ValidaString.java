@@ -59,12 +59,12 @@ public class ValidaString extends JsonDeserializer<String> implements Contextual
         LOGGER.info("nombre de la propiedad = {}", keyName);
 
         if (!node.isTextual()) {
-            LOGGER.error("No es un texto " + keyName + node);
+            LOGGER.error("No es un texto {}{}", keyName, node);
             throw new ApiException(List.of(PARAMETROS_NO_VALIDOS), EMensajeException.E400);
         }
 
         if (isRequired) {
-            LOGGER.info("validacion atributo requerido " + keyName + " " + node);
+            LOGGER.info("validacion atributo requerido {} {}", keyName, node);
             isEmpty(node.asText(), keyName);
             isBlank(node.asText(), keyName);
 
@@ -82,7 +82,7 @@ public class ValidaString extends JsonDeserializer<String> implements Contextual
     }
 
     public void validaNodo(JsonNode nodo, String keyName) {
-        LOGGER.info("El tipo de anotacion es: " + anotacion);
+        LOGGER.info("El tipo de anotacion es: {}", anotacion);
         if (!Pattern.matches(getRegex(anotacion), nodo.asText())) {
             LOGGER.error("No cumple el regex " + keyName + " " + nodo.asText());
             throw new ApiException(List.of(PARAMETROS_NO_VALIDOS), EMensajeException.E400);
@@ -92,14 +92,14 @@ public class ValidaString extends JsonDeserializer<String> implements Contextual
 
     public void isBlank(String node, String keyName) {
         if (node.isBlank()) {
-            LOGGER.error("el atributo " + keyName + " es incorrecto Texto con espacios enblanco");
+            LOGGER.error("el atributo {} es incorrecto Texto con espacios enblanco", keyName);
             throw new ApiException(List.of(PARAMETROS_NO_VALIDOS), EMensajeException.E400);
         }
     }
 
     public void isEmpty(String node, String keyName) {
         if (node.isEmpty()) {
-            LOGGER.error("el atributo " + keyName + " es incorrecto Texto en blanco");
+            LOGGER.error("el atributo {} es incorrecto Texto en blanco", keyName);
             throw new ApiException(List.of(PARAMETROS_NO_VALIDOS), EMensajeException.E400);
         }
     }
